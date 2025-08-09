@@ -25,9 +25,9 @@ export default function Footer() {
         <div>
           <h2 className="font-bold text-lg mb-2">Quick Links</h2>
           <ul className="space-y-1">
-            <li><a className="link link-hover" href="#">Terms & Conditions</a></li>
-            <li><a className="link link-hover" href="#">Privacy Policy</a></li>
-            <li><a className="link link-hover" href="#">Help & Support</a></li>
+            <li><Link to="/terms-and-condtions" className="link link-hover">Terms & Conditions</Link></li>
+            <li><Link to="/privacy-policy" className="link link-hover">Privacy Policy</Link></li>
+            <li><Link to="/safety-security" className="link link-hover">Safety & Security Guidelines</Link></li>
           </ul>
         </div>
 

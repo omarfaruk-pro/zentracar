@@ -22,6 +22,9 @@ import MyBookings from "../Pages/dashboard/my-bookings/MyBookings";
 import UpdateProfile from "../Pages/dashboard/profile/UplateProfile";
 import AboutUs from "../Pages/about-us/AboutUs";
 import ContactUs from "../Pages/contact-us/ContactUs";
+import TermsAndConditions from "../Pages/termsAndConditions/TermsAndConditions";
+import PrivacyPolicy from "../Pages/privacy-policy/PrivacyPolicy";
+import SafetySecurityGuidelines from "../Pages/safety-security-guidelines/SafetySecurityGuidelines";
 
 export const router = createBrowserRouter([
     {
@@ -55,6 +58,18 @@ export const router = createBrowserRouter([
             {
                 path:'register',
                 Component: Register
+            },
+            {
+                path:"terms-and-condtions",
+                Component: TermsAndConditions
+            },
+            {
+                path: "privacy-policy",
+                Component: PrivacyPolicy
+            },
+            {
+                path: "safety-security",
+                Component: SafetySecurityGuidelines
             }
         ]
     },

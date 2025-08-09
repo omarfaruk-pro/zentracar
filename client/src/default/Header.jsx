@@ -53,7 +53,7 @@ export default function Header() {
                                 {
                                     user ? (
                                         <div onClick={() => setShowLogout(!showLogout)} className='relative'>
-                                            <img className='w-10 h-10 rounded-full object-cover' src={user?.photoURL ? user?.photoURL : userPhoto} alt="" />
+                                            <img className='w-10 h-10 rounded-full object-cover' src={user?.photoURL ? user?.photoURL : userPhoto} alt={user?.displayName} />
                                             <div className={`opacity-0 absolute top-full right-0 w-30 bg-[#292f3b] p-3 rounded-md text-center dark:bg-[#f1f1f1] ${showLogout ? "opacity-100" : "opacity-0"}`}>
                                                 <p>{user?.displayName}</p>
                                                 <button onClick={handleLogout} className={`btn btn-neutral h-7 sm:h-7 px-3 sm:px-4 dark:btn-primary mt-3`}>Logout</button>
