@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { FaCalendarAlt, FaCar } from "react-icons/fa";
+import { FaCalendarAlt, FaCar} from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { Tooltip } from 'react-tooltip'
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../component/Loading";
 import Swal from "sweetalert2";
-import { FaXmark } from "react-icons/fa6";
+import { FaMoneyBillWave, FaXmark } from "react-icons/fa6";
 import DatePicker from "react-datepicker";
 import { differenceInCalendarDays, parse } from "date-fns";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -112,8 +112,9 @@ export default function MyBookings() {
                   <th>#</th>
                   <th>Car Name</th>
                   <th>Booking Date</th>
-                  <th className="text-center">Price</th>
-                  <th className="text-center">Status</th>
+                  <th className="">Price</th>
+                  <th className="text-center">B Status</th>
+                  <th className="text-center">P Status</th>
                   <th className="text-right">Actions</th>
                 </tr>
               </thead>
@@ -139,16 +140,29 @@ export default function MyBookings() {
 
                             </div>
                           </td>
-                          <td className="text-center">
+                          <td className="">
                             <p><span className="text-sm">
                               Total: ${book.dailyRentalPrice * getTotalDays(book.bookingStartDate, book.bookingEndDate)}
                             </span></p>
                           </td>
                           <td className="text-center">
-                            <p>{book.status || 'Pending'}</p>
+                            <p>{book.bookingStatus || 'Pending'}</p>
+                          </td>
+                          <td className="text-center">
+                            <p className="capitalize">{book.paymentStatus || 'Unpaid'}</p>
                           </td>
                           <td>
                             <div className="flex gap-2 justify-end">
+                              {
+                                book.paymentStatus === "unpaid" && (
+                                  <button
+                                    className="btn btn-sm bg-orange-400 text-white shadow-md hover:bg-emerald-700 hover:shadow-lg transition-all duration-200"
+                                    title="Paid"
+                                  >
+                                    <FaMoneyBillWave className="w-5 h-5" />
+                                  </button>
+                                )
+                              }
                               <Link to={`/car/${book.carID}`} className="btn btn-primary btn-sm text-base"><FaCar /></Link>
                               <button onClick={() => bookingDelete(book._id)} data-tooltip-id="delete" data-tooltip-content="Cancel Booking" type="button" className="btn bg-white text-red-950 btn-sm text-base"><MdDeleteForever /></button>
                               <Tooltip id="delete" />

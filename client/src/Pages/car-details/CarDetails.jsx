@@ -77,7 +77,8 @@ export default function CarDetails() {
         bookingData.userEmail = user.email;
         bookingData.userName = user.displayName;
         bookingData.carID = id;
-        bookingData.status = "pending";
+        bookingData.bookingStatus = "pending";
+        bookingData.paymentStatus = "unpaid";
 
         axiosSecure.post(`/bookings`, bookingData)
             .then(res => {

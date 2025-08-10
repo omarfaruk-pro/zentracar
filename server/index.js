@@ -1,10 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const admin = require("firebase-admin");
+const Stripe = require("stripe")
 require('dotenv').config();
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express();
 const port = process.env.PORT || 3000;
+
+const stripe = new Stripe(process.env.STRIPE_SK);
 
 app.use(cors());
 app.use(express.json());
@@ -15,7 +18,7 @@ const decodedFB = Buffer.from(process.env.FIREBASE_TOKEN, 'base64').toString('ut
 const serviceAccount = JSON.parse(decodedFB);
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert(serviceAccount)
 });
 
 
@@ -44,6 +47,29 @@ const verifyEmail = (req, res, next) => {
   }
   next();
 }
+
+app.post('/payment-intent', async (req, res) => {
+  try {
+    const { amount } = req.body;
+
+    if (!amount) {
+      return res.status(400).json({ error: 'Amount is required' });
+    }
+
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount,
+      currency: 'usd',
+      payment_method_types: ['card'],
+    });
+
+    res.send({ clientSecret: paymentIntent.client_secret });
+  } catch (error) {
+    console.error('Stripe error:', error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
 const uri = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@practice1.stkfhhm.mongodb.net/?retryWrites=true&w=majority&appName=practice1`
 
 const client = new MongoClient(uri, {

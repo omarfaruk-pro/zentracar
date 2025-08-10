@@ -16,7 +16,6 @@ import useUserInfo from '../../hooks/useUserInfo';
 export default function DashboardSidebar() {
 
     const { userInfo } = useUserInfo();
-    console.log(userInfo);
     const linkClass = ({ isActive }) =>
         `flex items-center gap-3 px-4 py-2 rounded-md transition text-sm font-medium text-white dark:text-black 
      ${isActive ? 'bg-blue-600 text-white dark:text-white' : 'text-gray-700 hover:bg-blue-600 hover:text-white'}`;
@@ -69,7 +68,7 @@ export default function DashboardSidebar() {
 
                 {/* User Routes */}
                 {
-                    userInfo?.role === "" && (
+                    userInfo?.role === "user" && (
                         <>
                             <NavLink to="/dashboard/user-payments" className={linkClass}>
                                 <FaCreditCard /> My Payments
