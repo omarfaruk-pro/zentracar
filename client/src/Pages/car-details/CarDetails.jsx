@@ -125,7 +125,7 @@ export default function CarDetails() {
                             {features?.map(feature => <span key={feature} className="bg-green-600 px-2 py-1 rounded-md">{feature}</span>)}
                         </div>
                         <p ><strong>Price:</strong> ${dailyRentalPrice}/day</p>
-                        <button type="button" onClick={() => handleModalOpen()} className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-md">
+                        <button disabled={availability === "Unavailable"} type="button" onClick={() => handleModalOpen()} className={` bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-md ${availability == "Unavailable" ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}>
                             Book Now
                         </button>
                     </div>

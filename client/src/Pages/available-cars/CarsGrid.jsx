@@ -21,7 +21,7 @@ export default function CarsGrid({ car }) {
                         <div className='overflow-hidden rounded-t-xl'>
                             <img className='w-full aspect-[5/3] object-cover rounded-t-xl group-hover:scale-110 duration-500' src={imageUrl} alt={carModel} />
                         </div>
-                        <span className='absolute min-w-35 transform translate-x-[38px] translate-y-[24px] rotate-45 top-0 text-center right-2 bg-green-500 text-white text-sm px-3 py-1 '>{availability}</span>
+                        <span className={`absolute min-w-35 transform translate-x-[38px] translate-y-[24px] rotate-45 top-0 text-center right-2  text-white text-sm px-3 py-1 ${availability === "Available" ? "bg-green-500" : "bg-red-500"}`}>{availability}</span>
                     </div>
                     <div className='px-4 pb-4'>
                         <div className="flex justify-between">

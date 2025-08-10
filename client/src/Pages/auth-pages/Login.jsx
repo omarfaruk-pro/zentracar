@@ -23,6 +23,13 @@ export default function Login() {
         e.target.reset();
         navigate(state?.from || "/");
       })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: `${error.message=="Firebase: Error (auth/invalid-credential)."? "Invalid email or password": error.message}`,
+        });
+      });
   }
 
 
