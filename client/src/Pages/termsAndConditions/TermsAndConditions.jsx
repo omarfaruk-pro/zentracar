@@ -89,7 +89,7 @@ export default function TermsAndConditions() {
         </div>
 
         <div className="pt-6 border-t border-gray-200 dark:border-gray-700 text-sm">
-          Last updated: August 9, 2025
+          Last update on August 9, 2025
         </div>
       </div>
     </section>
