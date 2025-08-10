@@ -1,7 +1,7 @@
 import { FaLock } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
-export default function Forbidden() {
+export default function Forbidden({role}) {
   return (
     <>
       <div className="text-center px-6">
@@ -10,7 +10,8 @@ export default function Forbidden() {
         </div>
         <h1 className="text-5xl font-bold mb-4">403</h1>
         <h2 className="text-2xl font-semibold mb-2">Access Forbidden</h2>
-        <p className="mb-6 text-gray-600 dark:text-gray-300 max-w-md mx-auto">
+        <h2 className="text-xl font-semibold mb-2">You are not {role} to access this page</h2>
+        <p className="mb-6 opacity-70 max-w-md mx-auto">
           Sorry, you don’t have permission to access this page.  
           If you believe this is an error, please contact support.
         </p>

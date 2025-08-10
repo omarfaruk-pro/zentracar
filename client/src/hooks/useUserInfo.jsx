@@ -23,6 +23,7 @@ export default function useUserInfo() {
           title: "Failed to fetch user info",
         });
         console.error(error);
+        setLoading(false);
       } finally {
         setLoading(false);
       }

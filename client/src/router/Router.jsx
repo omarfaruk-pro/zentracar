@@ -25,6 +25,9 @@ import ContactUs from "../Pages/contact-us/ContactUs";
 import TermsAndConditions from "../Pages/termsAndConditions/TermsAndConditions";
 import PrivacyPolicy from "../Pages/privacy-policy/PrivacyPolicy";
 import SafetySecurityGuidelines from "../Pages/safety-security-guidelines/SafetySecurityGuidelines";
+import AdminRoute from "../private/AdminRoute";
+import OwnerRoute from "../private/OwnerRoute";
+import UserRoute from "../private/UserRoute";
 
 export const router = createBrowserRouter([
     {
@@ -83,39 +86,39 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'manage-users',
-                element: <ManageUsers></ManageUsers>
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
             },
             {
                 path: 'manage-payments',
-                element: <ManagePayments></ManagePayments>
+                element: <AdminRoute><ManagePayments></ManagePayments></AdminRoute>
             },
             {
                 path: 'sales-report',
-                element: <SalesReport></SalesReport>
+                element: <AdminRoute><SalesReport></SalesReport></AdminRoute>
             },
             {
                 path: 'add-car',
-                element: <AddCar></AddCar>
+                element: <OwnerRoute><AddCar></AddCar></OwnerRoute>
             },
             {
                 path: 'my-cars',
-                element: <MyCars></MyCars>
+                element: <OwnerRoute><MyCars></MyCars></OwnerRoute>
             },
             {
                 path: 'booking-history',
-                element: <BookingHistory></BookingHistory>
+                element: <OwnerRoute><BookingHistory></BookingHistory></OwnerRoute>
             },
             {
                 path: 'manage-booking/:id',
-                element: <ManageBooking></ManageBooking>
+                element: <OwnerRoute><ManageBooking></ManageBooking></OwnerRoute>
             },
             {
                 path: 'my-bookings',
-                element: <MyBookings></MyBookings>
+                element: <UserRoute><MyBookings></MyBookings></UserRoute>
             },
             {
                 path: 'user-payments',
-                element: <UserPayments></UserPayments>
+                element: <UserRoute><UserPayments></UserPayments></UserRoute>
             },
             {
                 path: 'update-profile',

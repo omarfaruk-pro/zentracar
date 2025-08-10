@@ -31,7 +31,7 @@ export default function Header() {
                             <img className='h-16 hidden dark:block' src={logo} alt="Logo" />
                             <img className='h-16 dark:hidden' src={logoWhite} alt="Logo" />
                         </Link>
-                        <nav className={`absolute -left-full top-0 w-80 h-full bg-black z-10 p-10 lg:p-0 pt-14 lg:pt-0 lg:relative lg:w-auto lg:h-auto lg:bg-transparent lg:left-0 duration-300 ease-in-out  ${menu ? "left-0" : "-left-full"}`}>
+                        <nav className={`absolute -left-full top-0 w-80 h-screen bg-[#1D232A] dark:bg-white z-10 p-10 lg:p-0 pt-14 lg:pt-0 lg:relative lg:w-auto lg:h-auto lg:bg-transparent lg:left-0 duration-300 ease-in-out  ${menu ? "left-0" : "-left-full"}`}>
                             <div className='text-right lg:hidden'><button className='text-3xl -mr-4 -mt-4 p-4' onClick={() => { setMenu(!menu) }}><HiMiniXMark /></button></div>
                             <ul className='flex flex-col lg:flex-row gap-10 lg:gap-2  main-menu'>
                                 <li><NavLink className='py-2 px-5 rounded-md' to='/'>Home</NavLink></li>
